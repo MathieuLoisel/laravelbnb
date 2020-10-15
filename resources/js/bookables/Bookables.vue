@@ -10,14 +10,13 @@
                 :key="'row' + row"
             >
                 <div 
-                    class="col" 
+                    class="col d-flex align-items-stretch" 
                     v-for="(bookable, column) in bookablesInRow(row)"
                     :key ="'row' + row + column"
                 >
                     <bookable-list-item 
-                        :item-title="bookable.title" 
-                        :item-content="bookable.content" 
-                        :price="1000"
+                        class="text-justify"
+                        v-bind="bookable"
                     ></bookable-list-item>
                 </div>
                 <div 
@@ -61,51 +60,23 @@ export default {
     },
     created() {
         this.loading = true;
-        setTimeout(() =>{
-            this.bookables = [
-                {
-                    id: 1,
-                    title: "Cheap villa !!!",
-                    content: "A very cheap villa"
-                },
-                {
-                    id: 2,
-                    title: "Cheap villa 2",
-                    content: "A very cheap villa 2"
-                },
-                {
-                    id: 3,
-                    title: "Cheap villa 3",
-                    content: "A very cheap villa 2"
-                },
-                {
-                    id: 4,
-                    title: "Cheap villa 4",
-                    content: "A very cheap villa 2"
-                },
-                {
-                    id: 5,
-                    title: "Cheap villa 5",
-                    content: "A very cheap villa 2"
-                },
-                {
-                    id: 6,
-                    title: "Cheap villa 6",
-                    content: "A very cheap villa 2"
-                },
-                {
-                    id: 7,
-                    title: "Cheap villa 7",
-                    content: "A very cheap villa 2"
-                },
-            ];
-            this.loading = false;
-        }, 100);    
 
-        // setTimeout(() => {
-        //     console.log("first change");
-        //     this.bookable1.title = "You'll see this !";
-        // }, 8000)
+        // const promise = new Promise((resolve, reject) => {
+        //     console.log(resolve);
+        //     console.log(reject);
+        //     setTimeout(() => resolve("Hello"), 3000);
+        // })
+        // .then(result => console.log(`Success ${result}`))
+        // .catch(result => console.log(`Error ${result}`));
+
+        // console.log(promise);
+
+        const req = axios
+            .get("/api/bookables")
+            .then(response => {
+                this.bookables = response.data.data
+                this.loading = false;
+            });
     },
 }
 </script>
