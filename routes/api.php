@@ -19,8 +19,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('bookables', 'Api\BookableController')->only(['index', 'show']);
-Route::get('bookables/{bookable}/availability', 'Api\BookableAvailabilityController')
-->name('bookables.availability.show');
+Route::get('bookables/{bookable_id}/availability', 'Api\BookableAvailabilityController')
+    ->name('bookables.availability.show');
+
+Route::get('bookables/{bookable_id}/reviews', 'Api\BookableReviewController')
+    ->name('bookables.reviews.index');
 
 // Route::get('bookable/{id}', function (Request $request, int $id){
 //     return Bookable::findOrFail($id);

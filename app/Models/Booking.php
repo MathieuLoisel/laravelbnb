@@ -16,6 +16,11 @@ class Booking extends Model
         return $this->belongsTo(Bookable::class);
     }
 
+    public function reviews()
+    {
+        return $this->hasOne(Review::class);
+    }
+
     public function scopeBetweenDates(Builder $qb, $from, $to)
     {
         $result = $qb
