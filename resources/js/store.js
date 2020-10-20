@@ -55,7 +55,7 @@ export default{
         inBasketAlready(state) {
             return function(id){
                 return state.basket.items.reduce(
-                    (result, item) => result ||item.bookable.id === item.bookable.id, 
+                    (result, item) => result ||item.bookable.id === id, 
                     false
                 );
             }

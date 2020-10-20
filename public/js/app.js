@@ -2249,7 +2249,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     lastSearch: "lastSearch"
   })), {}, {
     inBasketAlready: function inBasketAlready() {
-      if (!this.bookable) {
+      if (null === this.bookable) {
         return false;
       }
 
@@ -80704,7 +80704,7 @@ __webpack_require__.r(__webpack_exports__);
     inBasketAlready: function inBasketAlready(state) {
       return function (id) {
         return state.basket.items.reduce(function (result, item) {
-          return result || item.bookable.id === item.bookable.id;
+          return result || item.bookable.id === id;
         }, false);
       };
     }

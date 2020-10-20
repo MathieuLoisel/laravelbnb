@@ -83,7 +83,7 @@ export default {
             lastSearch : "lastSearch",
         }),
         inBasketAlready(){
-            if (!this.bookable) {
+            if (null === this.bookable) {
                 return false;
             }
 
