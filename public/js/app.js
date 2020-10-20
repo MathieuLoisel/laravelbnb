@@ -78622,7 +78622,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_components_FatalError_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./shared/components/FatalError.vue */ "./resources/js/shared/components/FatalError.vue");
 /* harmony import */ var _shared_components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shared/components/ValidationErrors.vue */ "./resources/js/shared/components/ValidationErrors.vue");
 /* harmony import */ var _shared_components_Success_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./shared/components/Success.vue */ "./resources/js/shared/components/Success.vue");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./store */ "./resources/js/store.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
 
 
 
@@ -78652,9 +78654,11 @@ Vue.component('star-rating', _shared_components_StarRating_vue__WEBPACK_IMPORTED
 Vue.component('fatal-error', _shared_components_FatalError_vue__WEBPACK_IMPORTED_MODULE_6__["default"]);
 Vue.component('v-errors', _shared_components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_7__["default"]);
 Vue.component('success', _shared_components_Success_vue__WEBPACK_IMPORTED_MODULE_8__["default"]);
+var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store(_store__WEBPACK_IMPORTED_MODULE_9__["default"]);
 var app = new Vue({
   el: '#app',
   router: _routes__WEBPACK_IMPORTED_MODULE_0__["default"],
+  store: store,
   components: {
     "index": _index_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   }
@@ -79589,6 +79593,31 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     errorFor: function errorFor(field) {
       return this.errors && this.errors[field] ? this.errors[field] : null;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/store.js":
+/*!*******************************!*\
+  !*** ./resources/js/store.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: {
+    lastSearch: {
+      from: null,
+      to: null
+    }
+  },
+  mutations: {
+    setLastSearch: function setLastSearch(state, payload) {
+      state.lastSearch = payload;
     }
   }
 });
