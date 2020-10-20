@@ -30,7 +30,9 @@ Route::apiResource('reviews', 'Api\ReviewController')->only(['show', 'store']);
 Route::get('booking-by-review/{reviewKey}', 'Api\BookingByReviewController')
     ->name('bokking.by-review.show');
     
-    
+Route::post('checkout', 'Api\CheckoutController')
+    ->name('checkout');
+
 // Route::get('bookable/{id}', function (Request $request, int $id){
 //     return Bookable::findOrFail($id);
 // });
