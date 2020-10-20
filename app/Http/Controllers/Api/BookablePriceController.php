@@ -15,7 +15,7 @@ class BookablePriceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(int $id, Request $request)
+    public function __invoke(string $id, Request $request)
     {
         $bookable = Bookable::findOrfail($id);
 
