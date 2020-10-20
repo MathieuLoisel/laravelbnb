@@ -1948,6 +1948,30 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["itemsInBasket"])), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
@@ -7334,7 +7358,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nh6.badge[data-v-9d55657e]{\n    font-size: 100%;\n}\n", ""]);
+exports.push([module.i, "\nh6.badge[data-v-9d55657e]{\n    font-size: 100%;\n}\na[data-v-9d55657e]{\n    color: black;\n}\n", ""]);
 
 // exports
 
@@ -61778,7 +61802,88 @@ var render = function() {
           ]),
           _vm._v(" "),
           _vm._l(_vm.basket, function(item) {
-            return _c("div", { key: item.bookable.id })
+            return _c("div", { key: item.bookable.id }, [
+              _c(
+                "div",
+                {
+                  staticClass: "py-2 border-top d-flex justify-content-between"
+                },
+                [
+                  _c(
+                    "span",
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          attrs: {
+                            to: {
+                              name: "bookable",
+                              params: { id: item.bookable.id }
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(item.bookable.title) +
+                              "\n                        "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "font-weight-bold" }, [
+                    _vm._v(
+                      "\n                        $" +
+                        _vm._s(item.price.total) +
+                        "\n                    "
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "py-2 d-flex justify-content-between" },
+                [
+                  _c("span", [
+                    _vm._v(
+                      "\n                        From " +
+                        _vm._s(item.dates.from) +
+                        "\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("span", [
+                    _vm._v(
+                      "\n                        To From " +
+                        _vm._s(item.dates.to) +
+                        " \n                    "
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "py-2 text-right" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm btn-secondary",
+                    on: {
+                      click: function($event) {
+                        return _vm.$store.dispatch(
+                          "removeFromBasket",
+                          item.bookable.id
+                        )
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fa-trash-alt" })]
+                )
+              ])
+            ])
           })
         ],
         2
@@ -80584,7 +80689,9 @@ __webpack_require__.r(__webpack_exports__);
       commit('addToBasket', payload);
       localStorage.setItem('basket', JSON.stringify(state.basket));
     },
-    removeFromBasket: function removeFromBasket() {
+    removeFromBasket: function removeFromBasket(_ref2, payload) {
+      var commit = _ref2.commit,
+          state = _ref2.state;
       commit('removeFromBasket', payload);
       localStorage.setItem('basket', JSON.stringify(state.basket));
     },
