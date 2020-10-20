@@ -10,6 +10,7 @@ import FatalError from './shared/components/FatalError.vue'
 import ValidationErrors from './shared/components/ValidationErrors.vue'
 import Success from './shared/components/Success.vue'
 import storeDefinition from './store'
+import Check from './shared/components/Check.vue'
 
 window.Vue = require('vue');
 
@@ -32,6 +33,7 @@ Vue.component('star-rating', StarRating);
 Vue.component('fatal-error', FatalError);
 Vue.component('v-errors', ValidationErrors);
 Vue.component('success', Success);
+Vue.component('check', Check);
 
 const store = new Vuex.Store(storeDefinition);
 
