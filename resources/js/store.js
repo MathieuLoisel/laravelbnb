@@ -49,6 +49,8 @@ export default{
             if (basket) {
                 context.commit('setBasket', JSON.parse(basket));
             }
+
+            context.commit('setLoggedIn', isLoggedInUtil());
         },
         addToBasket({commit, state}, payload){
             commit('addToBasket', payload);
