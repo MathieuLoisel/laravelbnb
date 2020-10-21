@@ -2020,7 +2020,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 11:
                 _context.prev = 11;
                 _context.t0 = _context["catch"](2);
-                _this.errors = _context.t0.response && _context.t0.response.data.error;
+                _this.errors = _context.t0.response && _context.t0.response.data.errors;
 
               case 14:
                 _this.loading = false;
@@ -81642,7 +81642,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     basket: {
       items: []
-    }
+    },
+    isLoggedIn: false,
+    user: {}
   },
   mutations: {
     setLastSearch: function setLastSearch(state, payload) {

@@ -71,7 +71,7 @@ export default {
                 });
                 await axios.get('/user');
             } catch (error) {
-                this.errors = error.response && error.response.data.error;
+                this.errors = error.response && error.response.data.errors;
             }
 
             this.loading = false;
