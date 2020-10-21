@@ -46,14 +46,5 @@ const app = new Vue({
     },
     async beforeCreate(){
         this.$store.dispatch('loadStoredState');
-       
-        // await axios.get('/sanctum/csrf-cookie');
-        // await axios.post("/login", {
-        //     email:'noel87@example.com',
-        //     password: 'password'
-        // });
-
-        await axios.get('/user');
-
     }
 });

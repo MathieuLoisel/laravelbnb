@@ -11,21 +11,28 @@
                         placeholder="Enter your e-mail"
                         class="form-control" 
                         v-model="email"
+                        :class="[{'is-invalid': errorFor('email')}]"
                     >
+                    <v-errors :errors="errorFor('email')"></v-errors>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input 
-                        type="text" 
+                        type="password" 
                         name="password" 
                         id="password" 
                         placeholder="Enter your password"
                         class="form-control" 
                         v-model="password"
+                        :class="[{'is-invalid': errorFor('password')}]"
                     >
+                    <v-errors :errors="errorFor('password')"></v-errors>
                 </div>
-                <button class="btn btn-primary btn-lg btn-block">Log-in</button>
+
+                <button class="btn btn-primary btn-lg btn-block" :disabled="loading" @click.prevent="login">Log-in</button>
+
                 <hr>
+
                 <div>
                     No account yet ?
                     <router-link :to="{name: 'home'}" class="font-weight-bold">Register</router-link>
@@ -40,12 +47,35 @@
 </template>
 
 <script>
+import validationErrors from '../shared/mixins/validationErrors';
+
 export default {
+    mixins: [validationErrors],
     data(){
         return{
             email:null,
             password:null,
+            loading:null,
         };
+    },
+    methods: {
+        async login(){
+            this.loading = true;
+            this.errors = null;
+
+            try {
+                await axios.get('/sanctum/csrf-cookie');
+                await axios.post("/login", {
+                    email: this.email,
+                    password: this.password
+                });
+                await axios.get('/user');
+            } catch (error) {
+                this.errors = error.response && error.response.data.error;
+            }
+
+            this.loading = false;
+        }
     }
 }
 </script>
