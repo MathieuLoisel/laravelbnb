@@ -41,7 +41,7 @@ window.axios.interceptors.response.use(
     //response => response, 
     response => {
         return response;
-    }
+    },
     error => {
         if (401 === error.response.status) {
             store.dispatch('logout');
