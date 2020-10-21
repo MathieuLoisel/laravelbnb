@@ -29,6 +29,11 @@ const routes = [
         path:'/auth/login',
         component: require('./auth/Login.vue').default,
         name:'login'
+    },
+    {
+        path:'/auth/register',
+        component: require('./auth/Register.vue').default,
+        name:'register'
     }
 ];
 
